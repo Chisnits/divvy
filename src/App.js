@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Budget from './Containers/Budget'
 
 class App extends Component {
   render() {
     return (
       <div>
-        
+        <Budget />
       </div>
     );
   }
