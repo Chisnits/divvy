@@ -34,7 +34,7 @@ class Budget extends Component {
         // ajax POST request to server goes here
         const newObj = {"amount": amount, "description": description}
         this.setState({
-            data: [... dataSet, newObj]
+            data: [...this.state.data, newObj]
         })
     }
 
