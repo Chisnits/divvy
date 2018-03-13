@@ -23,23 +23,38 @@ class Budget extends Component {
     }
     componentWillMount(){
         this.setState({
-            data: dataSet,
-            total: dataSet.reduce( (a,b) => {
-                return a + b.amount;
-            }, 0)
+            data: this.state.data,
+            // total: this.state.data.reduce( (a,b) => {
+            //     return a + b.amount;
+            // }, 0)
         })
     }
 
     add (description, amount) {
         // ajax POST request to server goes here
         const newObj = {"amount": amount, "description": description}
-        this.setState({
-            data: [...this.state.data, newObj]
-        })
+        if (this.state.data.length <= 7){
+            this.setState({
+                data: [...this.state.data, newObj],
+                total: this.state.data.reduce( (a,b) => {
+                    console.log("A ", a)
+                    console.log("B ", b)
+                    return a + b.amount;
+                }, 0)
+            });
+        } else {
+            this.state.data.splice(0,1)
+            //if the list gets too long, hide the previous transactions.
+            this.setState({
+                data: [...this.state.data, newObj],
+                total: this.state.data.reduce( (a,b) => {
+                    return a + b.amount;
+                }, 0)
+            })
+        }
     }
 
     render() {
-        console.log(dataSet)
         return (
             <div>
               <h1>My Budget</h1>

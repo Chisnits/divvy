@@ -1,7 +1,6 @@
 import React from 'react';
 
 export const TransactionList = (props) => {
-    console.log(props)
     var List = props.data.map((item, i) => (
         <div key={i}>
             <div>{item.description}</div>

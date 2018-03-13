@@ -19,10 +19,10 @@ class Add extends Component {
         })
     }
     handleChangeAmount(e){
-        // var numberChecker = parseFloat(Math.round(e.target.value * 100) / 100).toFixed(2);
+        var numberCreator = Number(e.target.value)
         //Make sure that the number will only ever be in the hundreths value.
         this.setState({
-            amount: e.target.value
+            amount: numberCreator
         })
     }
     add(e) {
