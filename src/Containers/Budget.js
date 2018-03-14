@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Add from '../Components/Add';
 import { TransactionList } from '../Components/TransactionList';
 import { Balance } from '../Components/Balance';
+import { NameBudget } from '../Components/NameBudget';
 
 var dataSet = [
     {amount: -10, description: 'Chipotle'},
@@ -16,7 +17,8 @@ class Budget extends Component {
 
         this.state = {
             data: dataSet,
-            total: 0
+            total: 0,
+            name: "Budget"
         };
 
         this.add = this.add.bind(this);
@@ -24,9 +26,9 @@ class Budget extends Component {
     componentWillMount(){
         this.setState({
             data: this.state.data,
-            // total: this.state.data.reduce( (a,b) => {
-            //     return a + b.amount;
-            // }, 0)
+            total: this.state.data.reduce( (a,b) => {
+                return a + b.amount;
+            }, 0)
         })
     }
 
@@ -57,7 +59,7 @@ class Budget extends Component {
     render() {
         return (
             <div>
-              <h1>My Budget</h1>
+              <NameBudget name={this.state.name}/>
               <Add onAdd={this.add} />
               <TransactionList data={this.state.data} />
               <Balance total={this.state.total} />
